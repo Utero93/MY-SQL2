@@ -12,12 +12,12 @@
   },
   "author": "By: Angel Gonzalez",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Utero93/MY-SQL2/issues"
-  },
-  "homepage": "https://github.com/Utero93/MY-SQL2#readme",
+  
   "dependencies": {
-    "inquirer": "^8.2.6",
-    "mysql2": "^3.7.1"
+    "console.table": "^0.10.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.6.5",
+    "table": "^6.8.1"
   }
 }
