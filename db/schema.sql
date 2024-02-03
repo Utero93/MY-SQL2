@@ -1,48 +1,33 @@
-DROP DATABASE IF EXISTS business_db;
-CREATE DATABASE business_db;
+/* create and use company_db */
+DROP DATABASE IF EXISTS company_db; 
+CREATE DATABASE company_db; 
+USE company_db;
 
-USE business_db;
-
-CREATE TABLE department (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  name VARCHAR(30) NOT NULL
+/* Create departments table */
+CREATE TABLE departments (
+  department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+  department_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE role (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  title VARCHAR(30) NOT NULL,
-  salary DECIMAL,
-  department_id INT NULL,
-    -- department_id in the role table will be a foreign key that is taking the reference from the department table's id column
+/* Create roles table */
+CREATE TABLE roles (
+  role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  job_title VARCHAR(100) NOT NULL,
+  department_id INT NOT NULL, 
+  role_salary DECIMAL(12,2) NOT NULL,
   FOREIGN KEY (department_id)
-    -- referencing department table's id column
-  REFERENCES department(id)
-  ON DELETE CASCADE
-); 
+  REFERENCES departments(department_id)
+);
 
-CREATE TABLE employee (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  first_name VARCHAR(30) NOT NULL,
-  last_name VARCHAR(30) NOT NULL,
-  role_id INT NULL,
+/* Create employees table */
+CREATE TABLE employees (
+  employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  employee_last_name VARCHAR(50) NOT NULL,
+  employee_first_name VARCHAR(50) NOT NULL,
+  role_id INT NOT NULL,
   manager_id INT NULL,
-    -- role_id in the employee table will be a foreign key that is taking the reference from the role table's id column
   FOREIGN KEY (role_id)
-    -- referencing role table's id column
-  REFERENCES role(id)
-  ON DELETE SET NULL
-  ON UPDATE CASCADE,
-    -- manager_id is referencing the employee's table id column
+  REFERENCES roles (role_id),
   FOREIGN KEY (manager_id)
-  REFERENCES employee(id)
-  ON DELETE SET NULL
-  ON UPDATE CASCADE
-)
-
-CREATE TABLE employee (
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-first_name VARCHAR(30) NOT NULL,
-last_name VARCHAR(30) NOT NULL,
-role_id INT,
-manager_id INT NOT NULL
+  REFERENCES employees (employee_id)
 );

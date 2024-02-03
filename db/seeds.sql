@@ -1,30 +1,28 @@
-INSERT INTO department(name) 
-VALUES
-("Engineering"),
-("Finance"),
-("Sales"),
-("Legal");
+-- Insert data into the 'departments' table
+INSERT INTO departments (department_name) VALUES
+('Sales'),
+('Marketing'),
+('Finance'),
+('IT');
 
-INSERT INTO role(title, salary, department_id)
-VALUES
-('Sales Lead', 100000, 3),
-('Salesperson', 80000, 3),
-('Lead Engineer', 150000, 1),
-('Software Engineer', 120000, 1),
-('Account Manager', 160000, 2),
-('Accountant', 125000, 2),
-('Legal Team Lead', 250000, 4),
-('Lawyer', 190000, 4);
+-- Insert data into the 'roles' table
+INSERT INTO roles (job_title, department_id, role_salary) VALUES
+('Sales Manager', 1, 80000.00),
+('Sales Representative', 1, 50000.00),
+('Marketing Manager', 2, 75000.00),
+('Marketing Coordinator', 2, 45000.00),
+('Finance Manager', 3, 85000.00),
+('Financial Analyst', 3, 60000.00),
+('IT Manager', 4, 90000.00),
+('Software Developer', 4, 70000.00);
 
--- order matters because manager_id is referencing the same table's primary id
--- i.e can't have a manger_id for an employee id that doesn't exist yet
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES
-('John', 'Doe', 1, null),
-('Mike', 'Chan', 3, null),
-('Ashley', 'Rodriguez', 4, 2),
-('Kevin', 'Tupik', 2, 1),
-('Sarah', 'Lourd', 7, null),
-('Tom', 'Allen', 5, null),
-('Kunal', 'Singh', 6, 6),
-('Malia', 'Brown', 8, 5);
+-- Insert data into the 'employees' table
+INSERT INTO employees (employee_last_name, employee_first_name, role_id, manager_id) VALUES
+('Smith', 'John', 1, NULL),
+('Johnson', 'Jane', 2, 1),
+('Williams', 'Robert', 3, 1),
+('Jones', 'Emily', 4, 2),
+('Brown', 'Michael', 5, 3),
+('Davis', 'Laura', 6, 3),
+('Miller', 'David', 7, 4),
+('Wilson', 'Olivia', 8, 4);
