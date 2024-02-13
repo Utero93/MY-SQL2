@@ -68,6 +68,8 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 ![MYSQL-DEMO](./media/MYSQL-DEMO.gif)
 
+![LINK TO DEMO](./media/demo/Employee-SQL.mp4)
+
 
 ## Installation:
 ```md
